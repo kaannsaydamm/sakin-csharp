@@ -49,10 +49,10 @@ Katkıda Bulunmak isterseniz, lütfen aşağıdaki adımları izleyin:
 - pull request atın.
 
 **Lisans**
-Bu Proje [MIT Lisansı]altında lisanslanmıştır.
+- Bu Proje MIT Lisansı altında lisanslanmıştır.
 
 **İletişim**
-Herhangi bir sorunuz veya geri bildiriminiz varsa, lütfen kaannsaydamm@proton.me ile iletişime geçin.
+- Herhangi bir sorunuz veya geri bildiriminiz varsa, lütfen kaannsaydamm@proton.me ile iletişime geçin.
 
 
 
