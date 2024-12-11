@@ -34,3 +34,26 @@ Sakin CSharp, sistem olaylarını toplamak ve yönetmek için geliştirilmiş bi
    ```bash
    dotnet run
    ```
+
+**Kullanım**
+- Uygulama çalıştırıldığında, sistem olaylarını toplamaya başlayacaktır.
+- Toplanan olaylar, veritabanında saklanır ve kullanıcı arayüzü üzerinden görüntülenebilir.
+- Yeni olaylar eklemek için LogEvent metodunu kullanabilirsiniz.
+
+**Katkıda Bulunma**
+Katkıda Bulunmak isterseniz, lütfen aşağıdaki adımları izleyin:
+- Forklayın.
+- Yeni dal oluşturun
+- commitleyin.
+- pushlayın.
+- pull request atın.
+
+**Lisans**
+Bu Proje MIT Lisansı altında lisanslanmıştır.
+
+**İletişim**
+Herhangi bir sorunuz veya geri bildiriminiz varsa, lütfen kaannsaydamm@proton.me ile iletişime geçin.
+
+
+
+
