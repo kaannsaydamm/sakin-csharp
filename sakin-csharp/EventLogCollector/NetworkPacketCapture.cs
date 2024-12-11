@@ -10,10 +10,10 @@ class NetworkPacketCapture
     // Dosya adları için interface adını temizleme fonksiyonu
     static string SanitizeName(string name)
     {
-        return Regex.Replace(name, @"[<>:""\/\\|?*]", "_");
+        return Regex.Replace(name, @"[<>:""/\\|?*]", "_");
     }
 
-    static async Task Main(string[] args)
+    private static async Task Main(string[] args)
     {
         try
         {
@@ -57,8 +57,9 @@ class NetworkPacketCapture
                 // Paket yakalama event'i
                 device.OnPacketArrival += (sender, e) =>
                 {
-                    var rawPacket = e.Packet;
-                    var packet = Packet.Parse(rawPacket.Data);
+                    var rawPacket = e.Packet; // RawPacket'i al
+                    var packet = Packet.ParsePacket(rawPacket.Data); // Paket verisini çöz
+
                     var ipPacket = packet.Extract<IPPacket>();
 
                     if (ipPacket != null)
@@ -66,7 +67,8 @@ class NetworkPacketCapture
                         string logMessage = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff} - " +
                             $"Sender: {ipPacket.SourceAddress}, " +
                             $"Receiver: {ipPacket.DestinationAddress}, " +
-                            $"Protocol: {ipPacket.Protocol}";
+                            $"Protocol: {ipPacket.Protocol}, " +
+                            $"Length: {ipPacket.PayloadData.Length}";
 
                         Console.WriteLine(logMessage);
                         logWriter.WriteLine(logMessage);
@@ -84,6 +86,11 @@ class NetworkPacketCapture
         catch (Exception ex)
         {
             Console.WriteLine($"Interface {device.Name} için hata: {ex.Message}");
+        }
+        finally
+        {
+            device.StopCapture();
+            device.Close();
         }
     }
 }

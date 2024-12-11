@@ -1,27 +1,16 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace sakin_csharp.Pages;
-
-[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-[IgnoreAntiforgeryToken]
-public class ErrorModel : PageModel
+namespace sakin_csharp.Pages
 {
-    public string? RequestId { get; set; }
-
-    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
-
-    private readonly ILogger<ErrorModel> _logger;
-
-    public ErrorModel(ILogger<ErrorModel> logger)
+    public class ErrorModel : PageModel
     {
-        _logger = logger;
-    }
+        public string RequestId { get; set; } // Hata ID'si
 
-    public void OnGet()
-    {
-        RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId); // Hata ID'sini gösterme durumu
+
+        public void OnGet()
+        {
+            RequestId = HttpContext.TraceIdentifier; // Hata ID'sini al
+        }
     }
 }
-

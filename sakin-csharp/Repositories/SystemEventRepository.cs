@@ -1,39 +1,24 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using sakin_csharp.Data;
-using sakin_csharp.Models;
+using System.Linq;
+using sakin_csharp.EventLogCollector.Models;
 
 namespace sakin_csharp.Repositories
 {
+    // Olay deposu implementasyonu
     public class SystemEventRepository : ISystemEventRepository
     {
-        private readonly SakinDbContext _context;
+        private readonly List<EventLogSystemEvent> _events = new List<EventLogSystemEvent>(); // Olayları tutacak liste
 
-        public SystemEventRepository(SakinDbContext context)
+        // Tüm olayları getir
+        public IEnumerable<EventLogSystemEvent> GetAllEvents()
         {
-            _context = context;
+            return _events; // Olay listesini döndür
         }
 
-        public async Task<IEnumerable<SystemEvent>> GetAllEventsAsync()
+        // Yeni bir olayı ekle
+        public void AddEvent(EventLogSystemEvent systemEvent)
         {
-            return await _context.SystemEvents
-                .OrderByDescending(e => e.Timestamp)
-                .ToListAsync();
-        }
-
-        public async Task<SystemEvent> AddEventAsync(SystemEvent systemEvent)
-        {
-            await _context.SystemEvents.AddAsync(systemEvent);
-            await _context.SaveChangesAsync();
-            return systemEvent;
-        }
-
-        public async Task<IEnumerable<SystemEvent>> GetEventsByTypeAsync(string eventType)
-        {
-            return await _context.SystemEvents
-                .Where(e => e.EventType == eventType)
-                .ToListAsync();
+            _events.Add(systemEvent); // Olayı listeye ekle
         }
     }
 }

@@ -1,13 +1,12 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using sakin_csharp.Models;
+using sakin_csharp.EventLogCollector.Models;
 
 namespace sakin_csharp.Repositories
 {
+    // Olay deposu arayüzü
     public interface ISystemEventRepository
     {
-        Task<IEnumerable<SystemEvent>> GetAllEventsAsync();
-        Task<SystemEvent> AddEventAsync(SystemEvent systemEvent);
-        Task<IEnumerable<SystemEvent>> GetEventsByTypeAsync(string eventType);
+        IEnumerable<EventLogSystemEvent> GetAllEvents(); // Tüm olayları getir
+        void AddEvent(EventLogSystemEvent systemEvent); // Yeni bir olayı ekle
     }
 }

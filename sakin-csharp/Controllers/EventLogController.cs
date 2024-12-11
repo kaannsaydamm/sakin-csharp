@@ -1,51 +1,26 @@
-using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using sakin_csharp.Repositories;
-using sakin_csharp.Models;
-using System.Collections.Generic;
+using sakin_csharp.EventLogCollector;
 
 namespace sakin_csharp.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
+    // Olay günlüğü ile ilgili API denetleyicisi
     public class EventLogController : ControllerBase
     {
-        private readonly ISystemEventRepository _eventRepository;
+        private readonly EventLogService _eventLogService; // Olay günlüğü servisi
 
-        public EventLogController(ISystemEventRepository eventRepository)
+        public EventLogController(EventLogService eventLogService)
         {
-            _eventRepository = eventRepository;
+            _eventLogService = eventLogService; // Bağımlılık enjeksiyonu ile olay günlüğü servisini al
         }
 
-        // GET: api/eventlog
+          // Tüm olayları getiren API metodu
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SystemEvent>>> GetAllEvents()
+        public IActionResult GetEvents()
         {
-            try
-            {
-                var events = await _eventRepository.GetAllEventsAsync();
-                return Ok(events);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Event log toplama hatası: {ex.Message}");
-            }
-        }
-
-        // GET: api/eventlog/type/{eventType}
-        [HttpGet("type/{eventType}")]
-        public async Task<ActionResult<IEnumerable<SystemEvent>>> GetEventsByType(string eventType)
-        {
-            try
-            {
-                var events = await _eventRepository.GetEventsByTypeAsync(eventType);
-                return Ok(events);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Event log toplama hatası: {ex.Message}");
-            }
+            var events = _eventLogService.GetAllEvents(); // Tüm olayları al
+            return Ok(events); // Olayları döndür
         }
     }
 }

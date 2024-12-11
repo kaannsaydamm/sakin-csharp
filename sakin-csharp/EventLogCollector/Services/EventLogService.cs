@@ -1,38 +1,37 @@
-using System;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using sakin_csharp.EventLogCollector.Interfaces;
-using sakin_csharp.EventLogCollector.Services;
+using sakin_csharp.EventLogCollector.Models;
 using sakin_csharp.Repositories;
-using sakin_csharp.Models;
 
-namespace sakin_csharp.Services
+namespace sakin_csharp.EventLogCollector
 {
+    // Olay günlüğü toplama ve yönetim servisi
     public class EventLogService
     {
-        private readonly IEventLogCollector _eventLogCollector;
-        private readonly ISystemEventRepository _eventRepository;
+        private readonly ISystemEventRepository _repository; // Olay deposu
 
-        public EventLogService(
-            ISystemEventRepository eventRepository)
+        public EventLogService(ISystemEventRepository repository)
         {
-            _eventRepository = eventRepository;
-            _eventLogCollector = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-                ? new WindowsEventLogCollector()
-                : new LinuxEventLogCollector() as IEventLogCollector;
+            _repository = repository; // Bağımlılık enjeksiyonu ile olay deposunu al
         }
 
+        // Olay günlüğü toplama işlemini başlat
         public async Task StartEventLogCollectionAsync()
         {
-            while (true)
-            {
-                var events = _eventLogCollector.CollectEvents();
-                foreach (var evt in events)
-                {
-                    await _eventRepository.AddEventAsync(evt);
-                }
-                await Task.Delay(TimeSpan.FromMinutes(5));
-            }
+            // Olay günlüğü toplama işlemleri burada yapılacak
+            Console.WriteLine("Event log collection started...");
+        }
+
+        // Tüm olayları getir
+        public IEnumerable<EventLogSystemEvent> GetAllEvents()
+        {
+            return _repository.GetAllEvents(); // Olay deposundan tüm olayları al
+        }
+
+        // Yeni bir olayı kaydet
+        public void LogEvent(EventLogSystemEvent systemEvent)
+        {
+            _repository.AddEvent(systemEvent); // Olay deposuna yeni olayı ekle
         }
     }
 }

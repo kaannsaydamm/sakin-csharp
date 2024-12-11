@@ -1,19 +1,20 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using sakin_csharp.EventLogCollector;
 
-namespace sakin_csharp.Pages;
-
-public class IndexModel : PageModel
+namespace sakin_csharp.Pages
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
+    public class IndexModel : PageModel
     {
-        _logger = logger;
-    }
+        private readonly EventLogService _eventLogService; // Olay günlüğü servisi
 
-    public void OnGet()
-    {
+        public IndexModel(EventLogService eventLogService)
+        {
+            _eventLogService = eventLogService; // Bağımlılık enjeksiyonu ile olay günlüğü servisini al
+        }
 
+        public void OnGet()
+        {
+            // Ana sayfa yüklendiğinde yapılacak işlemler
+        }
     }
 }
