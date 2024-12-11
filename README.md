@@ -1,6 +1,6 @@
 # sakin-csharp
 
-## DİKKAT, DAHA DENEYSEL BİR AŞAMADA, AMATÖRCE YAZILMIŞ OLUP, AMATÖRCE GELİŞTİRİLMEKTEDİR. BU BİR SELF_DEVELOPMENT PROJESİDİR. TAMAMEN BİR HAYAL ÜRÜNÜDÜR, GERÇEKLERLE ALAKASI YOKTUR.
+## DİKKAT, DAHA DENEYSEL BİR AŞAMADA, AMATÖRCE YAZILMIŞ OLUP, AMATÖRCE GELİŞTİRİLMEKTEDİR. BU BİR SELF_DEVELOPMENT PROJESİDİR. <h1>BU DİZİDEKİLER TAMAMEN BİR HAYAL ÜRÜNÜDÜR, GERÇEK KİŞİLER VEYAHUT KURUMLAR İLE ALAKASI YOKTUR. :D </h1>
 
 Sakin CSharp, sistem olaylarını toplamak ve yönetmek için geliştirilmiş bir .NET Core uygulamasıdır. Bu proje, hem Windows hem de Linux sistemlerinde çalışabilen bir olay günlüğü toplama mekanizması sunar. Kullanıcıların sistem olaylarını izlemelerine ve bu olayları veritabanında saklamalarına olanak tanır.
 
