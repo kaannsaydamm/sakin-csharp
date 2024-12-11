@@ -49,7 +49,7 @@ Katkıda Bulunmak isterseniz, lütfen aşağıdaki adımları izleyin:
 - pull request atın.
 
 **Lisans**
-Bu Proje MIT Lisansı altında lisanslanmıştır.
+Bu Proje [MIT Lisansı][https://github.com/kaannsaydamm/sakin-csharp?tab=MIT-1-ov-file]altında lisanslanmıştır.
 
 **İletişim**
 Herhangi bir sorunuz veya geri bildiriminiz varsa, lütfen kaannsaydamm@proton.me ile iletişime geçin.
