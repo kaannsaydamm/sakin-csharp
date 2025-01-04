@@ -1,16 +1,15 @@
 using Microsoft.EntityFrameworkCore;
-using sakin_csharp.EventLogCollector.Models;
+using sakin_csharp.Models;
 
 namespace sakin_csharp.Data
 {
     public class SakinDbContext : DbContext
     {
-        // Veritabanı bağlamı için yapılandırıcı
         public SakinDbContext(DbContextOptions<SakinDbContext> options) : base(options)
         {
         }
 
-        // Olay günlüğü verilerini tutacak DbSet
-        public DbSet<EventLogSystemEvent> SystemEvents { get; set; }
+        public DbSet<NetworkPacket> NetworkPackets { get; set; } = null!;
+        public DbSet<SystemEvent> SystemEvents { get; set; } = null!;
     }
 }

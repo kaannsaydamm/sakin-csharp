@@ -6,8 +6,8 @@ namespace sakin_csharp.Models
     public class SystemEvent
     {
         public int Id { get; set; } // Olayın benzersiz kimliği
-        public string EventType { get; set; } // Olay türü
-        public string Message { get; set; } // Olay mesajı
+        public string EventType { get; set; } = null!; // Olay türü
+        public string Message { get; set; } = null!; // Olay mesajı
         public DateTime Timestamp { get; set; } // Olay zaman damgası
     }
 }

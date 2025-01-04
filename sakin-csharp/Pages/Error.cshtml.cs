@@ -4,7 +4,7 @@ namespace sakin_csharp.Pages
 {
     public class ErrorModel : PageModel
     {
-        public string RequestId { get; set; } // Hata ID'si
+        public string? RequestId { get; set; } // Hata ID'si
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId); // Hata ID'sini gösterme durumu
 
