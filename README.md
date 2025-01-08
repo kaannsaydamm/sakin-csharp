@@ -23,7 +23,7 @@ Sakin CSharp, sistem olaylarını toplamak ve yönetmek için geliştirilmiş bi
 
 1. **Proje Klonlama**:
    ```bash
-   git clone https://github.com/kullaniciadi/sakin-csharp.git
+   git clone https://github.com/kaannsaydamm/sakin-csharp.git
    cd sakin-csharp
    ```
 2. **NuGet Paketlerinin Yüklenmesi**:
